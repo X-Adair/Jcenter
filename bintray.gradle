@@ -2,9 +2,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 Properties properties = new Properties()
-
-File localPropertiesFile = project.file("local.properties")
-
+File localPropertiesFile = project.rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
     properties.load(localPropertiesFile.newDataInputStream())
 }
@@ -12,8 +10,6 @@ File projectPropertiesFile = project.file("project.properties")
 if (projectPropertiesFile.exists()) {
     properties.load(projectPropertiesFile.newDataInputStream())
 }
-
-
 
 def projectVersion = properties.getProperty('project.version')
 
@@ -37,6 +33,7 @@ def bintrayName = properties.getProperty('bintray.name')
 def bintrayUser = properties.getProperty('bintray.user')
 def bintrayApiKey = properties.getProperty("bintray.apikey")
 
+version = projectVersion
 group = projectGroupId
 
 install {
@@ -100,7 +97,7 @@ javadoc {
         charSet 'UTF-8'
         author true
         version projectVersionName
-        links "http://docs.oracle.com/javase/7/docs/api"
+        links "http://docs.oracle.com/javase/8/docs/api"
     }
 }
 
