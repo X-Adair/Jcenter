@@ -21,7 +21,6 @@ def projectPackaging = properties.getProperty("project.packaging")
 def projectDescription = properties.getProperty('project.description')
 def projectSiteUrl = properties.getProperty('project.siteUrl')
 def projectGitUrl = properties.getProperty('project.gitUrl')
-def projectVersionName = android.defaultConfig.versionName
 
 def developerId = properties.getProperty('developer.id')
 def developerName = properties.getProperty('developer.name')
@@ -96,7 +95,7 @@ javadoc {
         encoding "UTF-8"
         charSet 'UTF-8'
         author true
-        version projectVersionName
+        version true
         links "http://docs.oracle.com/javase/8/docs/api"
     }
 }
@@ -111,7 +110,7 @@ bintray {
         websiteUrl = projectSiteUrl
         vcsUrl = projectGitUrl
         licenses = ['Apache-2.0']
+        publicDownloadNumbers = true
         publish = true
     }
 }
-
