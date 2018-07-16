@@ -32,6 +32,6 @@
         ./gradlew bintrayUpload
       </code>
     </pre>
-    如果以上两个命令都提示BUILD SUCCESSFUL，表示代码已经上传到bintary的仓库中
-* 6.进入bintary的项目中，点击Add to JCenter按钮，填写说明后进入审核，一般几小时后完成，然后就可以直接引用此项目。
+    如果以上两个命令都提示BUILD SUCCESSFUL，表示代码已经上传到bintray的仓库中
+* 6.进入bintray的项目中，点击Add to JCenter按钮，填写说明后进入审核，一般几小时后完成，然后就可以直接引用此项目。
     
