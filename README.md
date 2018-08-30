@@ -28,7 +28,7 @@
 * 5.打开Android Studio的Terminal，执行以下命令：
     <pre>
       <code>
-        ./gradlew install
+        ./gradlew clean build
         ./gradlew bintrayUpload
       </code>
     </pre>
