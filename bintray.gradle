@@ -21,7 +21,9 @@ def projectPackaging = properties.getProperty("project.packaging")
 def projectDescription = properties.getProperty('project.description')
 def projectSiteUrl = properties.getProperty('project.siteUrl')
 def projectGitUrl = properties.getProperty('project.gitUrl')
+def projectIssueTrackerUrl = properties.getProperty('project.issuesUrl')
 
+//开发者信息
 def developerId = properties.getProperty('developer.id')
 def developerName = properties.getProperty('developer.name')
 def developerEmail = properties.getProperty('developer.email')
@@ -35,6 +37,7 @@ def bintrayApiKey = properties.getProperty("bintray.apikey")
 version = projectVersion
 group = projectGroupId
 
+//配置maven库，生成pom.xml文件
 install {
     repositories.mavenInstaller {
         pom {
@@ -99,18 +102,38 @@ javadoc {
         links "http://docs.oracle.com/javase/8/docs/api"
     }
 }
-
+//bintray上传配置
 bintray {
+    //bintray网站的用户名
     user = bintrayUser
+    //bintray网站分配给你的key，
     key = bintrayApiKey
     configurations = ['archives']
+    //这个必须设置为true，默认为false，只有这样才能发布,(写在外面,不要写在publish里面)
+    publish = true
+    //是否覆盖已经发布的版本工件
+    override = false
     pkg {
+        //bintray仓库名字
         repo = bintrayRepo
+        //bintray项目名
         name = bintrayName
+        //bintray项目的描述
+        desc = projectDescription
         websiteUrl = projectSiteUrl
+        issueTrackerUrl = projectIssueTrackerUrl
         vcsUrl = projectGitUrl
         licenses = ['Apache-2.0']
         publicDownloadNumbers = true
-        publish = true
+
+//        version {
+//            // gpg的配置是在为jcenter自动上传到mavenCenter做准备 ， 没有本签名配置无法将包同步到mavenCenter,因为只有经过签名的包才允许上传到maveCenter.
+//            gpg {
+//                sign = true
+//                passphrase = properties.getProperty("bintray.gpg.password")
+//            }
+//        }
+
+
     }
 }
