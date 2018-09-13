@@ -1,5 +1,5 @@
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 Properties properties = new Properties()
 File localPropertiesFile = project.rootProject.file("local.properties")
@@ -52,6 +52,7 @@ install {
                     license {
                         name 'Apache-2.0'
                         url ' http://www.apache.org/licenses/LICENSE-2.0' // 填写开源协议
+						distribution 'repo'
                     }
                 }
                 developers {
